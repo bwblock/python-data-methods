@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 
+# code based on: https://machinelearningmastery.com/arima-for-time-series-forecasting-with-python/
+
 
 from pandas import read_csv
 from pandas import datetime
@@ -19,6 +21,7 @@ series = read_csv('sales-time.csv', header=0, parse_dates=[0], index_col=0, sque
 model = ARIMA(series, order=(5,1,0))
 model_fit = model.fit(disp=0)
 print(model_fit.summary())
+
 # plot residual errors
 residuals = DataFrame(model_fit.resid)
 residuals.plot()
